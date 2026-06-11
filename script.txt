@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "script started to work and waiting to give number"
+read num 
+echo "$num is digit"
+if [ $num -gt 10 ]; then
+echo "is sup"
+elif [ $num -le 10 ]; then
+echo "is less"
+else
+echo "is not number"
+fi
+hello devops
