@@ -1,0 +1,524 @@
+Git & GitHub Notes
+1. What is Git?
+
+Git is a Version Control System.
+
+It tracks changes in files and maintains history locally on your machine.
+
+Install Git:
+
+git --version
+
+If a version is displayed, Git is installed.
+
+2. What is GitHub?
+
+GitHub is a cloud platform that stores Git repositories.
+
+Think:
+
+Git      = Local
+GitHub   = Remote
+
+Git works on your laptop.
+
+GitHub stores a copy of your repository on the internet.
+
+3. Git vs GitHub
+Git                GitHub
+--------------------------------
+Local              Remote
+Tracks history     Stores repositories
+Works offline      Requires internet
+git commit         git push / git pull
+4. Git Repository Structure
+
+When you run:
+
+git init
+
+Git creates:
+
+.git/
+
+This hidden folder contains:
+
+Commit History
+Branches
+Tags
+Configuration
+
+Without .git, the folder is NOT a Git repository.
+
+5. The Three Git Areas
+Working Directory
+
+Actual files you edit.
+
+script.txt
+notes.txt
+README.md
+
+Think:
+
+Your Workspace.
+
+Staging Area
+
+Temporary holding area.
+
+Command:
+
+git add .
+
+Think:
+
+Packing items into a box before shipping.
+
+Local Repository
+
+Stored inside:
+
+.git/
+
+Command:
+
+git commit -m "message"
+
+Think:
+
+Permanent history database.
+
+6. Flow of Changes
+Working Directory
+        ↓ git add
+Staging Area
+        ↓ git commit
+Local Repository
+        ↓ git push
+GitHub Repository
+
+Commands:
+
+git add .      -> Working Directory → Staging Area
+
+git commit     -> Staging Area → Local Repository
+
+git push       -> Local Repository → GitHub
+7. Creating a New Project
+
+Create folder:
+
+mkdir devops_foundation
+cd devops_foundation
+
+Initialize Git:
+
+git init
+
+Create first commit:
+
+git add .
+git commit -m "Initial commit"
+8. Create GitHub Repository
+
+Create repository:
+
+devops_foundation
+
+on GitHub.
+
+9. Connect Local Git to GitHub
+git remote add origin https://github.com/username/repo.git
+
+Verify:
+
+git remote -v
+
+Purpose:
+
+Connect local repository to GitHub repository.
+10. Authentication Methods
+
+Authentication answers:
+
+Who are you?
+
+Connection answers:
+
+Which repository?
+Method 1: Git Credential Manager (Windows)
+git credential-manager configure
+git push -u origin main
+
+Browser opens for login.
+
+Method 2: SSH Keys (Linux/WSL)
+
+Generate key:
+
+ssh-keygen -t ed25519
+
+Add public key to GitHub.
+
+Method 3: Personal Access Token (PAT)
+
+Use token instead of password.
+
+Common in CI/CD.
+
+11. Push Code to GitHub
+git push -u origin main
+
+Result:
+
+Laptop  ----------> GitHub
+12. Clone Existing Repository
+
+When repository already exists on GitHub:
+
+git clone <repo-url>
+
+Automatically:
+
+Downloads files
+Creates .git
+Configures remote
+
+No need to run:
+
+git init
+
+after cloning.
+
+13. Important Commands
+
+Current repository root:
+
+git rev-parse --show-toplevel
+
+Current branch:
+
+git branch
+
+View history:
+
+git log --oneline --graph --decorate --all
+
+Check status:
+
+git status
+14. Important Notes
+git add .
+
+. means current directory.
+
+When run from repository root:
+
+git add .
+
+adds all tracked and untracked files in the repository.
+
+WSL vs Git Bash
+
+If WSL Ubuntu is configured:
+
+Prefer:
+
+WSL Ubuntu
+
+because most Linux/DevOps commands work exactly like production servers.
+
+Easy Memory Trick
+
+Git = Local Database
+
+GitHub = Remote Database
+
+git add = Prepare Changes
+
+git commit = Save Locally
+
+git push = Upload
+
+git pull = Download
+
+git remote = Connect Repository
+
+Authentication = Login
+
+.git = Git Brain
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Important Points & Mistakes I Made While Learning Git
+1. Git Repository Root Matters
+
+Mistake:
+
+Created .git in parent folder.
+
+Example:
+
+github/
+├── .git
+├── Linuxnotes/
+└── devops_foundation/
+
+Result:
+
+Git tracked both folders in one repository.
+
+Lesson:
+
+Always check repository root:
+
+git rev-parse --show-toplevel
+
+One project = One .git
+
+2. Git and GitHub Are Different
+
+Mistake:
+
+Assumed creating a folder locally creates a GitHub repository.
+
+Wrong:
+
+Create folder
+↓
+GitHub repository appears
+
+Correct:
+
+Create local repository
+↓
+Create GitHub repository
+↓
+Connect remote
+↓
+Push
+3. Git Init vs Git Clone
+
+Use:
+
+git init
+
+When starting a brand-new project.
+
+Use:
+
+git clone <repo-url>
+
+When repository already exists on GitHub.
+
+Never do:
+
+git clone ...
+git init
+
+inside cloned repository.
+
+4. Authentication and Connection Are Different
+
+Mistake:
+
+Thought remote URL and authentication are same thing.
+
+Connection:
+
+git remote add origin <repo-url>
+
+Answers:
+
+Which repository?
+
+Authentication:
+
+Git Credential Manager
+SSH Key
+PAT
+
+Answers:
+
+Who are you?
+5. GitHub Does Not Know Local Branches
+
+Mistake:
+
+Created branch locally and expected GitHub to show it.
+
+Example:
+
+git checkout -b feature-login
+
+GitHub still shows:
+
+main
+
+Reason:
+
+Branch exists only locally.
+
+Need:
+
+git push -u origin feature-login
+6. main and master Are Just Branch Names
+
+Mistake:
+
+Thought main and master are special types of branches.
+
+Reality:
+
+main
+master
+dev
+feature-login
+
+All are just branch names.
+
+Only difference:
+
+GitHub uses main as default branch nowadays.
+
+7. HEAD Means Current Position
+
+Remember:
+
+HEAD = You Are Here
+
+Example:
+
+HEAD -> feature-login
+
+Means:
+
+Currently working on:
+
+feature-login
+8. Branches Are Just Pointers
+
+Many beginners think branch creates a copy of files.
+
+Wrong.
+
+Branch is simply:
+
+main -> Commit A
+
+Create:
+
+git checkout -b feature1
+
+Result:
+
+main     -> Commit A
+feature1 -> Commit A
+
+No files copied.
+
+9. Commit Saves Locally Only
+
+Mistake:
+
+Thought commit uploads code.
+
+Wrong:
+
+git commit
+
+saves only on laptop.
+
+Need:
+
+git push
+
+to upload to GitHub.
+
+10. Understand The Three Areas
+Working Directory
+       ↓ git add
+Staging Area
+       ↓ git commit
+Local Repository
+       ↓ git push
+GitHub Repository
+
+Remember:
+
+git add
+
+Prepare changes.
+
+git commit
+
+Save locally.
+
+git push
+
+Upload to GitHub.
+
+11. Hidden .git Folder Is The Brain
+
+Contains:
+
+Commit History
+Branches
+Tags
+Configuration
+
+Without:
+
+.git
+
+the folder is not a Git repository.
+
+12. Always Check Before Pushing
+
+Useful commands:
+
+git status
+git branch
+git remote -v
+git log --oneline --graph --decorate --all
+
+These four commands prevent most Git mistakes.
+
+13. Real Mistake I Encountered
+
+Created:
+
+Desktop/github/.git
+
+and
+
+Desktop/github/Linuxnotes/.git
+
+which caused nested repositories.
+
+Lesson:
+
+Avoid nested repositories unless intentionally using Git submodules.
+
+14. Most Useful Debug Commands
+
+Repository root:
+
+git rev-parse --show-toplevel
+
+Current branch:
+
+git branch
+
+Current status:
+
+git status
+
+Remote repository:
+
+git remote -v
+
+Commit tree:
+
+git log --oneline --graph --decorate --all
+

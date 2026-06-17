@@ -1,0 +1,8 @@
+Always remember
+1.if you create or any existing repo should contain .git to maintain always its history separately
+2.you have many repos in github then no worries 
+i. create a folder on local
+ii.navigate to that folder in linux terminal and use git clone {URL}
+iii. finish
+
+
