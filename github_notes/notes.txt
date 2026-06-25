@@ -522,4 +522,10 @@ Commit tree:
 
 git log --oneline --graph --decorate --all
 
-this line im chnaging from linux terminal
+
+his line im chnaging from linux terminal
+
+this line is added from github remote repo
+
+
+
