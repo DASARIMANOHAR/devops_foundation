@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "--- Special Variables Practice ---"
+echo "Script Name (\$0): $0"
+echo "First Argument (\$1): $1"
+echo "Second Argument (\$2): $2"
+echo "Total Number of Arguments (\$#): $#"
+echo "All Arguments separated (\$@): $@"
+echo "All Arguments smashed (\$*): $*"
+echo "This Script's Process ID (\$\$): $$"
+
+echo "----------------------------------"
+# Triggering a success
+ls . > /dev/null
+echo "Exit status of a successful command (\$?): $?"
+
+# Triggering a failure (trying to list a fake folder)
+ls /fakefolder_xyz 2> /dev/null
+echo "Exit status of a failed command (\$?): $?"

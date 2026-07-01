@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read skill
+echo "your skill is $skill "
+
+read -p "enter username: " name
+
+read -sp "enter password " password
+echo ""
+echo "the user is created"
+sleep 2
+echo "user : $name"

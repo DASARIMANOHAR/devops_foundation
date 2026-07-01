@@ -1,0 +1,14 @@
+#!/bin/bash
+#Command substitution is method of storing OUTPUT of a command into variable.
+#supppose you want to store output in to a variable 
+#we can store in 2 ways ` ` or  $( )
+
+
+current_user=`whoami`
+echo " the below output is stored in variable using ` `"
+echo "the user is $current_user"
+
+current_user=$(whoami)
+echo " the below output is stored in variable using ` `"
+echo "the user is $current_user"
+

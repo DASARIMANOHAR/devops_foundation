@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#arithmetic operations
+
+a=4
+b=5
+
+echo $((a+b)) 
+# arithmetic operations can done in between(( ))
+
+echo "this is mutlipilcation : $((a*b)) "
+
+echo "this is direct multiply : $((4*3))"
