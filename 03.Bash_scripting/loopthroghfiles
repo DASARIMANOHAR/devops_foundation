@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in *.log
+do
+    # Check if it's a real file before copying
+    if [ -f "$file" ]
+    then
+        cp "$file" "/backup/"
+        echo "$file copied"
+    else
+        echo "No .log files found in this directory."
+    fi
+done

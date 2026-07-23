@@ -1,0 +1,13 @@
+#!/bin/bash
+
+variable=$(whoami)
+read -p "enter username" name
+
+echo "user name is $name "
+
+if [ "$name" == $variable ]
+then
+echo "welcome admin"
+else 
+echo "**Access Denied"
+fi

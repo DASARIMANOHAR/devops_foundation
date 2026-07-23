@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for dir in dev test prod backup
+do
+mkdir -p "$dir"
+done 

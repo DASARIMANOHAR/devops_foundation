@@ -1,0 +1,18 @@
+#!/bin/bash
+
+read -p "enter the number:" num
+
+echo "you entered $num "
+
+echo "so if condition starts here"
+
+if [[ $num -ge 10 && $num -le 20 ]]
+then
+echo " number is between 10 and 20"
+elif [ $num -lt 10 ]
+then
+echo " number is less than 10"
+elif [ $num -gt 20 ]
+then
+echo " number is greater than 20"
+fi

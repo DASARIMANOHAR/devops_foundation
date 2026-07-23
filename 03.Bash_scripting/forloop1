@@ -1,0 +1,59 @@
+#!/bin/bash
+echo "forloop Number range"
+
+for i in {1..5}
+do
+echo "$i"
+done
+
+
+echo "-----------end----------"
+
+echo "forloop reverseNumber range"
+
+for i in {5..1}
+do
+    echo "$i"
+done
+
+echo "-----------end----------"
+
+
+echo "forloop step Number range"
+for i in {10..100..10}
+do
+    echo "$i"
+done
+
+echo "-----------end----------"
+
+echo "C-style forloop"
+for  ((i=5; i>=1; i--))
+do 
+echo "$i"
+done
+
+echo "-----------------------end---------------"
+
+echo "loop through files"
+
+for file in *.txt
+do
+echo "$file"
+done
+
+echo "----------------------end------------------"
+
+echo "Loop through command output"
+
+for user in $(whoami)
+do
+echo "$user"
+done
+
+echo "-----------end----------"
+
+for folder in $(ls)
+do 
+echo "$folder"
+done
